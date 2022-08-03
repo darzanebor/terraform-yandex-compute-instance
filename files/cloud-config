@@ -1,0 +1,12 @@
+#cloud-config
+users:
+  - name: ${username}
+    groups: ${user_groups}
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    lock_passwd: false
+    passwd: ${password}
+    ssh_authorized_keys:
+      - ${ssh_key}
+runcmd:
+  - touch /var/lib/cloud/instance/warnings/.skip
